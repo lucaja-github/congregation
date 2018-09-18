@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+ <Resource  name="jdbc/mysql" 
+            username="root" 
+            password="wxb1805c" 
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://cdb-gfn1fu81.gz.tencentcdb.com:10002/cgg"
+            auth="Container" 
+            type="javax.sql.DataSource"
+            maxActive="100" 
+            maxIdle="30" 
+            maxWait="10000"
+            initialSize="1"/>
+</Context>

@@ -1,0 +1,2 @@
+mysql -h cdb-gfn1fu81.gz.tencentcdb.com -P 10002 -u root -p
+
