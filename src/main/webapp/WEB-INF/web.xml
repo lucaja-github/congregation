@@ -23,4 +23,22 @@
 		<servlet-name>MerchantAddress</servlet-name>
 		<url-pattern>/qmap.do</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>controller.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<servlet-name>RegistServlet</servlet-name>
+		<servlet-class>controller.RegistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegistServlet</servlet-name>
+		<url-pattern>/regist.do</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+#footer_one{
+			width: 100%;
+			overflow: hidden;
+		}
+		#footer_middle{
+			padding:20px 0;
+			width: 900px;
+			margin: 0 auto;
+			background-color: #C0C0C0;
+			overflow: hidden;
+		}
+		#footer_middle ul{
+			list-style-type: none;
+			margin: 0 auto;
+			padding: 0px;
+		}
+		#footer_middle>ul{
+			margin-left: 180px;
+		}
+		#footer_middle>ul>li{
+			float: left;
+			width: 111px;
+			font-weight: bold; 
+			font-size: 14px;
+			text-align: center;
+		}
+		#footer_middle>ul>li>ul>li{
+			font-weight: normal;
+			font-size: 12px; 
+			margin: 5px 0;
+		}

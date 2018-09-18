@@ -1,0 +1,115 @@
+
+		*{
+			margin: 0px;
+			font-family: "Î¢ÈíÑÅºÚ";
+		}
+		.merchant_content_div{
+			width: 900px;
+			margin: 0 auto;
+		}
+		.merchant_bg{
+			background-image: url("../images/bg.jpg");
+			background-size: 900px 300px;
+			margin: 0 auto;
+			width: 900px;
+			height: 300px;
+			overflow: hidden;
+		}
+		.merchant_hot{
+			float: left;
+			margin: 20px auto;
+			overflow: hidden;
+			width: 450px;
+		}
+		.merchant_hot>h1{
+			text-align: center;
+			font-size: 16px;
+			border-bottom: 1px solid black;
+			margin: 0px 10px;
+			padding-bottom: 5px;
+		}
+		.merchant_hot_one{
+			float: left;
+			margin: 10px auto;
+			width: 200px;
+		}
+		.merchant_hot_one>div{
+			margin-left: 50px;
+		}
+		.merchant_hot_one img{
+			overflow: hidden;
+			width: 150px;
+			height: 100px;
+		}
+		.merchant_hot_one h3{
+			text-align: center;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		.merchant_hot_one input{
+			width: 120px;
+			margin-left: 15px;
+			font-size: 16px;
+			border: 1px solid #BF9540;
+			color: #BF9740;
+			background-color: #fff;
+			border-radius: 2px;
+		}
+		.merchant_selection{
+			width: 900px;
+			margin-bottom: 30px;
+			overflow: hidden;
+		}
+		.merchant_selection>h1{
+			font-size: 20px;
+			padding-bottom: 10px;
+		}
+		.merchant_selection_one{
+			width: 200px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-right: 33px;
+			float: left;
+		}
+		.merchant_selection_one>img{
+			width: 200px;
+			height: 150px;
+		}
+		.merchant_selection_one_good{
+			position: relative;
+			font-size: 10px;
+			margin: 10px 0px;
+		}
+		.merchant_selection_one_good>p{
+			position: absolute;
+			right: 0px;
+			top: 0px;
+		}
+		.merchant_selection_one_money{
+			position: relative;
+			font-size: 10px;
+		}
+		.merchant_selection_one_money>input{
+			position: absolute;
+			right: 0px;
+			top: 0px;
+		}
+		#merchant_selection_one_end{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-right: 0px;
+		}
+		.merchant_selection_more{
+			text-align: center;
+		}
+		.merchant_selection_more>a{
+			color: black;
+			text-decoration: none;
+		}
+		.merchant_selection_lettle{
+			text-align: center;
+		}
+		.merchant_selection_lettle>a{
+			color: black;
+			text-decoration: none;
+		}

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>首页</title>
+<style type="text/css">
+*,ul,a{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+#banner_wrap{
+    width: 1000px;
+    height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    /*超出位置隐藏*/
+    position: relative;
+    border: 1px solid #dddddd;
+    margin-top: 30px;
+}
+#banner_wrap>#banner{
+    position: absolute;
+    height: 400px;
+}
+#banner>.oLi{
+    width: 1000px;
+    height: 400px;
+    float: left;
+}
+#banner_wrap>.btn{
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 35px;
+    height: 70px;
+    margin-top: -35px;
+    border-radius: 3px;
+    opacity: .15;
+    background: red;
+    cursor: pointer;
+    transition: opacity .2s linear 0s;
+
+}
+#banner_wrap>.left{
+    background: url("#") #000 no-repeat 50%;
+    left: 5px;
+}
+#banner_wrap>.right{
+    background: url("#") #000 no-repeat 50%;
+    left: 960px;
+}
+#banner_wrap:hover>.btn{
+    opacity: 0.3;
+}
+
+.focus{
+    width: 108px;
+    height: 20px;
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    margin-left: -54px;
+    bottom: 12px;
+}
+.focus>.focus_li{
+    width: 12px;
+    height: 12px;
+    float: left;
+    margin: 4px 4px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+	#bigDiv{
+		width: 100%;
+		height: 600px;
+		/* border: 1px solid blue; */
+		margin-top: 50px;
+	}
+	#popular_shop,#popular_food{
+		width: 100px;
+		height: 20px;
+		color: purple;
+		font-size: 25px;
+	}	
+	.flex_1,.flex_2{
+		width: 100%;
+		height: 250px;
+		background-color: lightgrey;
+		display: flex;
+		/* flex-direction: row-reverse; */
+		/* flex-direction: column; */
+		/* justify-content: flex-start; */
+		/* justify-content: space-between; */
+		/* align-items: center; 左右*/
+		/* align-items: flex-end;上下 */
+	}
+	.flex-item{
+		background-image: radial-gradient(circle,orange,green);
+		width: 300px;
+		height: 200px;
+		margin: 20px;
+ 		float: left; 	
+	}
+</style>
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+ 
+ $(function() {
+	    // 1.定义计数器，定时器
+	    var num = 0;
+	    var timer = null;
+
+	    // 让第一个焦点刷新就显示 
+	    $('.focus_li').eq(0).css('background', '#0AA1ED');
+	    //2.动态获取ul的宽度
+	    //widht()方法是jq dom中的方法，是可以直接计算的宽度，写参数的情况下为赋值，不写参数为获取高度同理height()
+	    $('#banner').width($('.oLi').eq(0).width() * $('.oLi').length);
+	    // 3.定义轮播方法
+	    function BannerLeft() {
+	        // 原理与js一模一样
+	        if (num < $('.oLi').length - 1) {
+	            num++;
+	        } else {
+	            num = 0;
+	        }
+	        // 动起来的方法为jq中的自定义动画animate({方法里面以键值对的方式来写},这里的位置是动画的执行时间)
+	        $('#banner').animate({
+	            left: -$('.oLi').eq(0).width() * num
+	        }, 500)
+	        // 焦点轮播，对比js，这里就一句话
+	        $('.focus_li').eq(num).css('background', '#0AA1ED').siblings('li').css('background', '#fff');
+	    }
+	    // 4.使用定时器启动轮播
+	    timer = setInterval(BannerLeft, 2000);
+
+	    // 右侧按钮专用
+	    function BannerRight(){
+	    // 当num=0的时候为第一张图片，如果想要向右滚动图片，这个时候就需要把当前的第一张变成最后一张，这样向右去滚动
+	        if(num==0){
+	             // 如果是第一张,回到最后一张
+	            num = $('.oLi').size()-1;
+	        }else{
+	             // 向右滚动
+	            num--;
+	        }
+	        // 动起来的方法为jq中的自定义动画animate({方法里面以键值对的方式来写},这里的位置是动画的执行时间)
+	        $('#banner').animate({
+	            left: -$('.oLi').eq(0).width() * num
+	        }, 500)
+
+	        // 焦点轮播，对比js，这里就一句话
+	        $('.focus_li').eq(num).css('background', '#0AA1ED').siblings('li').css('background', '#fff');
+	    }
+
+
+	    // 获取最外层div
+	    $('#banner_wrap').mouseover(function(event) {
+	        // 清除定时器
+	        clearInterval(timer);
+	    });
+	    // 获取最外层div
+	    $('#banner_wrap').mouseout(function(event) {
+	        // 开启定时器
+	        timer = setInterval(BannerLeft, 2000);
+	    });
+
+	    // 左侧的按钮
+	    $('.left').click(function(event) {
+	        // 这里添加一个停止动画方法是为了能够在用户快速点击操作的时候，停止上一次的轮播动画的效果，如果不停止效果则会一直执行完成
+	        $('#banner').stop();
+	        BannerRight();
+	    });
+	    // 右侧的按钮
+	    // 这里添加一个停止动画方法是为了能够在用户快速点击操作的时候，停止上一次的轮播动画的效果，如果不停止效果则会一直执行完成
+	    $('.right').click(function(event) {
+	        $('#banner').stop();
+	        BannerLeft();
+	    });
+
+
+	    // 焦点触摸事件
+	    $('.focus_li').mouseover(function(event) {
+	        // 同理解决动画的执行完成问题
+	        $('#banner').stop();
+	        // $(this)JQ中的当前元素，index()是jq中定义好的获取下标的方法，解决num值传不过去的坑
+	        num = $(this).index();
+	        // 当前鼠标经过的显示
+	        $(this).css('background', '#0AA1ED').siblings('li').css('background', '#fff');
+	        $('#banner').animate({
+	            left: -$('.oLi').eq(0).width() * num
+	        }, 500)
+	    });
+	})
+ </script>
+
+</head>
+<body>
+	 <!-- 这里的外层需要相对定位，为了里层的ul -->
+        <div id="banner_wrap">
+            <!-- ul是整个轮播图动起来的地方，需要绝对定位 -->
+            <ul id="banner">
+                <li class="oLi"><a href="#javaScript"><img src="item_food_banner2.png" alt=""></a></li>
+                <li class="oLi"><a href="#javaScript"><img src="item_food_banner2.png" alt=""></a></li>
+                <li class="oLi"><a href="#javaScript"><img src="item_food_banner2.png" alt=""></a></li>
+                <li class="oLi"><a href="#javaScript"><img src="item_food_banner2.png" alt=""></a></li>
+                <li class="oLi"><a href="#javaScript"><img src="item_food_banner2.png" alt=""></a></li>
+            </ul>
+
+            <!-- 焦点 -->
+            <ul class="focus">
+                <li class="focus_li"></li>
+                <li class="focus_li"></li>
+                <li class="focus_li"></li>
+                <li class="focus_li"></li>
+                <li class="focus_li"></li>
+            </ul>
+
+            <!-- 添加按钮 -->
+            <div class="btn left"></div>
+            <div class="btn right"></div>
+        </div>
+
+	<div id="bigDiv">
+		<div id="popular_shop">热门商家</div>
+		<br>
+			<div class="flex_1">
+				<div class="flex-item"></div>
+				<div class="flex-item"></div>
+				<div class="flex-item"></div>
+				<div class="flex-item"></div>
+			</div>
+		<br><br><br>
+			<hr>
+		<br><br>
+		<div id="popular_food">热门菜品</div>	
+		<br>
+			<div class="flex_2">
+				<div class="flex-item"></div>
+				<div class="flex-item"></div>
+				<div class="flex-item"></div>
+				<div class="flex-item"></div>
+			</div>
+			
+	</div>
+</body>
+<script type="text/javascript" src="../jq/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+$("div").click(function(){
+	window.location.href="fenleiyemian.html";
+});
+</script>
+</html>
