@@ -19,7 +19,34 @@ public class RegistServlet extends HttpServlet {
 		//String username = request.getParameter("username").trim();
 		String phonenumber = request.getParameter("phonenumber").trim();
 		String password = request.getParameter("password").trim();
-		System.out.println(phonenumber);
+		String incode = request.getParameter("incode").trim();
+		String code = CodeServlet.getCodes();	
+
+		if(phonenumber == "" || phonenumber == null){
+			request.setAttribute("error_type","手机号为空");
+			request.getRequestDispatcher("/WEB-INF/regist_failed.jsp").forward(request, response);
+			return;
+		}
+
+		if(password == "" || password == null){
+			request.setAttribute("error_type","密码为空");
+			request.getRequestDispatcher("/WEB-INF/regist_failed.jsp").forward(request, response);
+			return;
+		}
+		
+		if(incode == "" || incode == null){
+			request.setAttribute("error_type","验证码为空");
+			request.getRequestDispatcher("/WEB-INF/regist_failed.jsp").forward(request, response);
+			return;
+		}
+
+		if(!code.equals(incode)){
+			request.setAttribute("error_type","验证码不对");
+			request.getRequestDispatcher("/WEB-INF/regist_failed.jsp").forward(request, response);
+			return;
+		}
+
+		//response.sendRedirect("congregation/login.html");
 		UserDAO dao = new UserDAO();		
 		List<User> users = dao.findAll();
 		boolean reg = true;
@@ -34,10 +61,18 @@ public class RegistServlet extends HttpServlet {
 			dao.save(phonenumber,password);
 			request.getRequestDispatcher("/WEB-INF/regist_successful.jsp").forward(request, response);
 		}else{
+			request.setAttribute("error_type","该用户已存在");
 			request.getRequestDispatcher("/WEB-INF/regist_failed.jsp").forward(request, response);
 		}
-		
+	}
 
+	public static void main(String[] args) {
+		String phonenumber ="";
+		if(phonenumber == ""){
+			System.out.println(90);
+			return;
+		}
+		System.out.println("sahkjals");
 	}
 
 }

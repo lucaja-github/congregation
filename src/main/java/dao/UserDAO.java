@@ -20,7 +20,7 @@ public class UserDAO {
 		ResultSet rs = null;
 		try {
 			conn = DatabaseUtil.getDataSourceConnection();
-			String sql = "SELECT * FROM 1805_userinfo_common";
+			String sql = "SELECT * FROM userinfo_common";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
@@ -46,7 +46,7 @@ public class UserDAO {
 		PreparedStatement ps = null;
 		try {
 			conn = DatabaseUtil.getDataSourceConnection();
-			String sql = "INSERT INTO 1805_userinfo_common "
+			String sql = "INSERT INTO userinfo_common "
 					+ "VALUES(?,?)";
 			ps = conn.prepareStatement(sql);
 			

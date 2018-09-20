@@ -5,7 +5,6 @@
 <title>Insert title here</title>
 </head>
 <body style="font-size: 20px;">
-	抱歉,注册失败！
-	失败原因：<%=request.getAttribute("error_type") %>。
+	${code_error }
 </body>
 </html>
